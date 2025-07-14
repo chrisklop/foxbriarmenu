@@ -73,13 +73,18 @@ function QuizContent() {
     // Check if this completes the quiz
     const totalAnswered = Object.keys(newAnswers).length
     
+    console.log('Question answered:', questionId)
+    console.log('Total answered:', totalAnswered)
+    console.log('Total questions:', questions.length)
+    console.log('Current question index:', currentQuestion)
+    
     if (totalAnswered === questions.length) {
-      // All questions answered - show completion
-      setTimeout(() => {
-        setShowCompletion(true)
-      }, 300)
+      // All questions answered - show completion immediately
+      console.log('Setting showCompletion to true')
+      setShowCompletion(true)
     } else if (currentQuestion < questions.length - 1) {
       // More questions to go - advance
+      console.log('Advancing to next question')
       setTimeout(() => {
         setCurrentQuestion(currentQuestion + 1)
       }, 300)
@@ -132,7 +137,26 @@ function QuizContent() {
         </header>
 
         <div className="space-y-8">
-          {!isComplete ? (
+          {showCompletion ? (
+            <div className="text-center space-y-6 fade-in">
+              <div className="space-y-2">
+                <p className="text-lg serif">
+                  Your essence has been captured.
+                </p>
+                <p className="text-sm text-dim mono">
+                  Preparing your libation...
+                </p>
+              </div>
+              
+              <button
+                onClick={handleSubmit}
+                disabled={isLoading}
+                className="ghost-button"
+              >
+                {isLoading ? 'Conjuring...' : 'Reveal My Drink'}
+              </button>
+            </div>
+          ) : (
             questions.map((q, index) => (
               <div
                 key={q.id}
@@ -159,25 +183,6 @@ function QuizContent() {
                 </div>
               </div>
             ))
-          ) : (
-            <div className="text-center space-y-6 fade-in">
-              <div className="space-y-2">
-                <p className="text-lg serif">
-                  Your essence has been captured.
-                </p>
-                <p className="text-sm text-dim mono">
-                  Preparing your libation...
-                </p>
-              </div>
-              
-              <button
-                onClick={handleSubmit}
-                disabled={isLoading}
-                className="ghost-button"
-              >
-                {isLoading ? 'Conjuring...' : 'Reveal My Drink'}
-              </button>
-            </div>
           )}
         </div>
 
