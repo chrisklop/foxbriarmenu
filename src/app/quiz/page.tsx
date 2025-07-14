@@ -69,16 +69,15 @@ function QuizContent() {
     const newAnswers = { ...answers, [questionId]: value }
     setAnswers(newAnswers)
     
+    // Check if this was the final question by counting answers
+    const totalAnswered = Object.keys(newAnswers).length
+    
     if (currentQuestion < questions.length - 1) {
       setTimeout(() => {
         setCurrentQuestion(currentQuestion + 1)
       }, 300)
-    } else {
-      // On the final question, just update the state to show completion
-      setTimeout(() => {
-        // Force a re-render to show the completion state
-      }, 300)
     }
+    // No else needed - completion state will show automatically when isComplete becomes true
   }
 
   const handleSubmit = async () => {
@@ -110,6 +109,12 @@ function QuizContent() {
 
   const progress = ((currentQuestion + 1) / questions.length) * 100
   const isComplete = Object.keys(answers).length === questions.length
+  
+  // Debug logging
+  console.log('Current answers:', answers)
+  console.log('Total answers:', Object.keys(answers).length)
+  console.log('Total questions:', questions.length)
+  console.log('Is complete:', isComplete)
 
   return (
     <div className="container fade-in">
