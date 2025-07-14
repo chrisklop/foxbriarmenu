@@ -15,7 +15,7 @@ export default function Logo({ scale = 0.25 }: LogoProps) {
         }}
       >
         <Image
-          src="/foxbriar-logo.png"
+          src="/foxbriarwhiteblacklogo.png"
           alt="The Foxbriar"
           fill
           className="object-contain"
