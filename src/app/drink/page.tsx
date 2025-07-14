@@ -24,6 +24,9 @@ function DrinkContent() {
   const [review, setReview] = useState<string>('')
   const [ordered, setOrdered] = useState<boolean>(false)
   const [isSaved, setIsSaved] = useState<boolean>(false)
+  const [showProfileForm, setShowProfileForm] = useState<boolean>(false)
+  const [newUsername, setNewUsername] = useState<string>('')
+  const [newPin, setNewPin] = useState<string>('')
   const searchParams = useSearchParams()
 
   useEffect(() => {
@@ -51,6 +54,18 @@ function DrinkContent() {
     const name = searchParams.get('name')
     const pin = searchParams.get('pin')
 
+    // If no user logged in, show profile creation form
+    if (!name || !pin) {
+      setShowProfileForm(true)
+      return
+    }
+
+    saveDrinkToProfile(name, pin)
+  }
+
+  const saveDrinkToProfile = (name: string, pin: string) => {
+    if (!drink) return
+
     const updatedDrink = {
       ...drink,
       rating,
@@ -58,48 +73,46 @@ function DrinkContent() {
       ordered
     }
 
-    // Save to localStorage for MVP
-    if (name && pin) {
-      const userKey = `user_${name}_${pin}`
-      const existingUser = localStorage.getItem(userKey)
+    const userKey = `user_${name}_${pin}`
+    const existingUser = localStorage.getItem(userKey)
+    
+    if (existingUser) {
+      const userData = JSON.parse(existingUser)
+      const existingDrinkIndex = userData.drinks.findIndex((d: Drink) => d.id === drink.id)
       
-      if (existingUser) {
-        const userData = JSON.parse(existingUser)
-        const existingDrinkIndex = userData.drinks.findIndex((d: Drink) => d.id === drink.id)
-        
-        if (existingDrinkIndex >= 0) {
-          userData.drinks[existingDrinkIndex] = updatedDrink
-        } else {
-          userData.drinks.push(updatedDrink)
-        }
-        
-        localStorage.setItem(userKey, JSON.stringify(userData))
+      if (existingDrinkIndex >= 0) {
+        userData.drinks[existingDrinkIndex] = updatedDrink
       } else {
-        // Create new user profile
-        const newUser = {
-          name,
-          pin,
-          createdAt: new Date().toISOString(),
-          drinks: [updatedDrink]
-        }
-        localStorage.setItem(userKey, JSON.stringify(newUser))
+        userData.drinks.push(updatedDrink)
       }
+      
+      localStorage.setItem(userKey, JSON.stringify(userData))
     } else {
-      // Anonymous session - just save the drink
-      const sessionDrinks = JSON.parse(localStorage.getItem('session_drinks') || '[]')
-      const existingIndex = sessionDrinks.findIndex((d: Drink) => d.id === drink.id)
-      
-      if (existingIndex >= 0) {
-        sessionDrinks[existingIndex] = updatedDrink
-      } else {
-        sessionDrinks.push(updatedDrink)
+      // Create new user profile
+      const newUser = {
+        name,
+        pin,
+        createdAt: new Date().toISOString(),
+        drinks: [updatedDrink]
       }
-      
-      localStorage.setItem('session_drinks', JSON.stringify(sessionDrinks))
+      localStorage.setItem(userKey, JSON.stringify(newUser))
     }
 
     setIsSaved(true)
     setTimeout(() => setIsSaved(false), 2000)
+  }
+
+  const handleCreateProfile = () => {
+    if (!newUsername.trim() || newPin.length !== 4) return
+    
+    saveDrinkToProfile(newUsername.trim(), newPin)
+    setShowProfileForm(false)
+    
+    // Update URL to include the new user info
+    const currentUrl = new URL(window.location.href)
+    currentUrl.searchParams.set('name', newUsername.trim())
+    currentUrl.searchParams.set('pin', newPin)
+    window.history.replaceState({}, '', currentUrl.toString())
   }
 
   const navigateToProfile = () => {
@@ -225,6 +238,50 @@ function DrinkContent() {
             >
               {isSaved ? 'Saved ✓' : 'Save This Drink'}
             </button>
+
+            {showProfileForm && (
+              <div className="space-y-4 p-4 border border-dim max-w-sm mx-auto fade-in">
+                <div className="space-y-2">
+                  <h3 className="serif text-lg">Create Your Profile</h3>
+                  <p className="text-sm text-dim">Save this drink and unlock your personal libation history</p>
+                </div>
+                
+                <div className="space-y-3">
+                  <input
+                    type="text"
+                    placeholder="Choose a username"
+                    value={newUsername}
+                    onChange={(e) => setNewUsername(e.target.value)}
+                    className="w-full"
+                  />
+                  <input
+                    type="text"
+                    placeholder="4-digit PIN"
+                    value={newPin}
+                    onChange={(e) => setNewPin(e.target.value.slice(0, 4))}
+                    className="w-full"
+                    maxLength={4}
+                  />
+                </div>
+                
+                <div className="space-y-2">
+                  <button
+                    onClick={handleCreateProfile}
+                    disabled={!newUsername.trim() || newPin.length !== 4}
+                    className="ghost-button w-full"
+                  >
+                    Create Profile & Save Drink
+                  </button>
+                  
+                  <button
+                    onClick={() => setShowProfileForm(false)}
+                    className="text-xs text-dim mono underline"
+                  >
+                    Skip for now
+                  </button>
+                </div>
+              </div>
+            )}
 
             <div className="space-y-2">
               {name && pin && (

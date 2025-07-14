@@ -39,10 +39,10 @@ Guest's answers:
 - Spicy food reaction: ${answers.spicy_reaction}
 - Evening mood: ${answers.evening_mood}
 
-Generate a cocktail that matches their personality. Return ONLY valid JSON in this exact format:
+Generate a cocktail that matches their personality. Create VERY creative, poetic, and mysterious drink names that sound like they belong in a David Lynch film or Wes Anderson speakeasy. Think abstract, evocative, and slightly surreal. Return ONLY valid JSON in this exact format:
 
 {
-  "names": ["Name Option 1", "Name Option 2", "Name Option 3", "Name Option 4", "Name Option 5"],
+  "names": ["The Velvet Confession", "Midnight's Borrowed Truth", "The Curator's Last Dance", "Shadow Between Raindrops", "The Archivist's Secret"],
   "selectedName": "The most fitting name from the list",
   "ingredients": ["2 oz gin", "0.5 oz elderflower liqueur", "0.75 oz fresh lime juice", "3 dashes orange bitters", "garnish: expressed lime peel"],
   "story": "A 3-5 sentence origin story connecting this drink to the bar's staff lore. Include mysterious details about bartenders Matt, Steve, Nick, or Krimson. Occasionally reference Peter who 'rarely shows up' or 'hasn't been seen in weeks' as a running joke. Make it elegant but slightly absurd.",
@@ -79,8 +79,8 @@ The drink should be sophisticated, real cocktail ingredients only. The story sho
     
     // Fallback cocktail for demo purposes
     return {
-      names: ["The Midnight Reverie", "Shadow's Edge", "Velvet Conspiracy", "The Quiet Storm", "Whispered Secrets"],
-      selectedName: "The Midnight Reverie",
+      names: ["The Archivist's Lament", "Shadow Between Raindrops", "The Curator's Final Hour", "Midnight's Borrowed Truth", "The Collector's Soliloquy"],
+      selectedName: "The Archivist's Lament",
       ingredients: ["2 oz Woodford Reserve", "0.5 oz Luxardo Maraschino", "0.75 oz fresh lemon juice", "2 dashes Angostura bitters", "garnish: expressed lemon peel"],
       story: "Steve discovered this recipe written in invisible ink on the back of a jazz album from 1947. He only prepares it when the moon is waning, claiming the shadows help him measure the pour. Peter was supposed to help catalog the vintage recipes, but he hasn't been seen in weeks. The last guest who ordered it claimed they could taste memories of conversations that hadn't happened yet.",
       whisper: "The Luxardo Maraschino has been humming Billie Holiday all evening.",
