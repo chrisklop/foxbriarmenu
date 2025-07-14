@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 
 interface Drink {
@@ -17,7 +17,7 @@ interface Drink {
   ordered: boolean
 }
 
-export default function DrinkPage() {
+function DrinkContent() {
   const [drink, setDrink] = useState<Drink | null>(null)
   const [rating, setRating] = useState<number>(0)
   const [review, setReview] = useState<string>('')
@@ -250,5 +250,19 @@ export default function DrinkPage() {
         </div>
       </div>
     </div>
+  )
+}
+
+export default function DrinkPage() {
+  return (
+    <Suspense fallback={
+      <div className="container fade-in">
+        <div className="py-16 text-center">
+          <div className="text-sm mono text-dim">Loading...</div>
+        </div>
+      </div>
+    }>
+      <DrinkContent />
+    </Suspense>
   )
 }

@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 
 interface Drink {
@@ -25,7 +25,7 @@ interface UserProfile {
   lastQuiz?: Record<string, string>
 }
 
-export default function Profile() {
+function ProfileContent() {
   const [profile, setProfile] = useState<UserProfile | null>(null)
   const [whispers, setWhispers] = useState<string[]>([])
   const searchParams = useSearchParams()
@@ -223,5 +223,19 @@ export default function Profile() {
         </div>
       </div>
     </div>
+  )
+}
+
+export default function Profile() {
+  return (
+    <Suspense fallback={
+      <div className="container fade-in">
+        <div className="py-16 text-center">
+          <div className="text-sm mono text-dim">Loading...</div>
+        </div>
+      </div>
+    }>
+      <ProfileContent />
+    </Suspense>
   )
 }
