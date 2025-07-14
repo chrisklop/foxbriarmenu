@@ -17,8 +17,8 @@ export default function Logo({ scale = 0.25 }: LogoProps) {
       <div 
         className="relative"
         style={{ 
-          width: `${300 * scale}px`, 
-          height: `${200 * scale}px` 
+          width: `${600 * scale}px`, 
+          height: `${400 * scale}px` 
         }}
       >
         <Image
