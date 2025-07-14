@@ -73,6 +73,11 @@ function QuizContent() {
       setTimeout(() => {
         setCurrentQuestion(currentQuestion + 1)
       }, 300)
+    } else {
+      // On the final question, just update the state to show completion
+      setTimeout(() => {
+        // Force a re-render to show the completion state
+      }, 300)
     }
   }
 
@@ -122,34 +127,34 @@ function QuizContent() {
         </header>
 
         <div className="space-y-8">
-          {questions.map((q, index) => (
-            <div
-              key={q.id}
-              className={`space-y-6 transition-all duration-500 ${
-                index === currentQuestion ? 'opacity-100' : 'opacity-0 absolute'
-              }`}
-            >
-              <h2 className="text-2xl serif text-center">
-                {q.question}
-              </h2>
-              
-              <div className="space-y-3">
-                {q.options.map((option) => (
-                  <button
-                    key={option.value}
-                    onClick={() => handleAnswer(q.id, option.value)}
-                    className={`pill-button w-full text-left ${
-                      answers[q.id] === option.value ? 'active' : ''
-                    }`}
-                  >
-                    {option.label}
-                  </button>
-                ))}
+          {!isComplete ? (
+            questions.map((q, index) => (
+              <div
+                key={q.id}
+                className={`space-y-6 transition-all duration-500 ${
+                  index === currentQuestion ? 'opacity-100' : 'opacity-0 absolute'
+                }`}
+              >
+                <h2 className="text-2xl serif text-center">
+                  {q.question}
+                </h2>
+                
+                <div className="space-y-3">
+                  {q.options.map((option) => (
+                    <button
+                      key={option.value}
+                      onClick={() => handleAnswer(q.id, option.value)}
+                      className={`pill-button w-full text-left ${
+                        answers[q.id] === option.value ? 'active' : ''
+                      }`}
+                    >
+                      {option.label}
+                    </button>
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
-
-          {isComplete && (
+            ))
+          ) : (
             <div className="text-center space-y-6 fade-in">
               <div className="space-y-2">
                 <p className="text-lg serif">
