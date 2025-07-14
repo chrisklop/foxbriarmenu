@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 
 const questions = [
@@ -56,7 +56,7 @@ const questions = [
   }
 ]
 
-export default function Quiz() {
+function QuizContent() {
   const [answers, setAnswers] = useState<Record<string, string>>({})
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const [isLoading, setIsLoading] = useState(false)
@@ -181,5 +181,19 @@ export default function Quiz() {
         </footer>
       </div>
     </div>
+  )
+}
+
+export default function Quiz() {
+  return (
+    <Suspense fallback={
+      <div className="container fade-in">
+        <div className="py-16 text-center">
+          <div className="text-sm mono text-dim">Loading...</div>
+        </div>
+      </div>
+    }>
+      <QuizContent />
+    </Suspense>
   )
 }
