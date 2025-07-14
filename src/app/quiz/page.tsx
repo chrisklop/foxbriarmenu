@@ -158,32 +158,25 @@ function QuizContent() {
               </button>
             </div>
           ) : (
-            questions.map((q, index) => (
-              <div
-                key={q.id}
-                className={`space-y-6 transition-all duration-500 ${
-                  index === currentQuestion ? 'opacity-100' : 'opacity-0 absolute'
-                }`}
-              >
-                <h2 className="text-2xl serif text-center">
-                  {q.question}
-                </h2>
-                
-                <div className="space-y-3">
-                  {q.options.map((option) => (
-                    <button
-                      key={option.value}
-                      onClick={() => handleAnswer(q.id, option.value)}
-                      className={`pill-button w-full text-left ${
-                        answers[q.id] === option.value ? 'active' : ''
-                      }`}
-                    >
-                      {option.label}
-                    </button>
-                  ))}
-                </div>
+            <div className="space-y-6 fade-in">
+              <h2 className="text-2xl serif text-center">
+                {questions[currentQuestion]?.question}
+              </h2>
+              
+              <div className="space-y-3">
+                {questions[currentQuestion]?.options.map((option) => (
+                  <button
+                    key={option.value}
+                    onClick={() => handleAnswer(questions[currentQuestion].id, option.value)}
+                    className={`pill-button w-full text-left ${
+                      answers[questions[currentQuestion].id] === option.value ? 'active' : ''
+                    }`}
+                  >
+                    {option.label}
+                  </button>
+                ))}
               </div>
-            ))
+            </div>
           )}
         </div>
 
