@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Logo from '@/components/Logo'
 
 export default function Home() {
   const [name, setName] = useState('')
@@ -18,6 +19,7 @@ export default function Home() {
   return (
     <div className="container fade-in">
       <div className="py-16 space-y-8">
+        <Logo />
         <header className="text-center space-y-4">
           <div className="text-sm mono text-dim">FOXBRIAR</div>
           <h1 className="text-4xl serif font-semibold">Sly Sips</h1>

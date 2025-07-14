@@ -2,6 +2,7 @@
 
 import { useState, useEffect, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
+import Logo from '@/components/Logo'
 
 interface Drink {
   id: string
@@ -98,6 +99,7 @@ function ProfileContent() {
     return (
       <div className="container fade-in">
         <div className="py-16 text-center space-y-8">
+          <Logo />
           <div className="space-y-4">
             <h1 className="text-3xl serif">Profile not found</h1>
             <p className="text-dim">Perhaps you entered the wrong name or PIN?</p>
@@ -117,6 +119,7 @@ function ProfileContent() {
   return (
     <div className="container fade-in">
       <div className="py-8 space-y-8">
+        <Logo />
         <header className="text-center space-y-4">
           <div className="text-xs mono text-dim">GUEST PROFILE</div>
           <h1 className="text-4xl serif font-semibold">

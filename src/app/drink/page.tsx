@@ -2,6 +2,7 @@
 
 import { useState, useEffect, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
+import Logo from '@/components/Logo'
 
 interface Drink {
   id: string
@@ -114,6 +115,7 @@ function DrinkContent() {
     return (
       <div className="container fade-in">
         <div className="py-16 text-center">
+          <Logo />
           <p className="text-dim">No drink found</p>
           <button 
             onClick={() => window.location.href = '/'}
@@ -132,6 +134,7 @@ function DrinkContent() {
   return (
     <div className="container fade-in">
       <div className="py-8 space-y-8">
+        <Logo />
         <header className="text-center space-y-4">
           <div className="text-xs mono text-dim">YOUR LIBATION</div>
           <h1 className="text-4xl serif font-semibold">

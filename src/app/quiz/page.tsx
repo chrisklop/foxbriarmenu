@@ -2,6 +2,7 @@
 
 import { useState, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
+import Logo from '@/components/Logo'
 
 const questions = [
   {
@@ -125,6 +126,7 @@ function QuizContent() {
   return (
     <div className="container fade-in">
       <div className="py-8 space-y-8">
+        <Logo />
         <header className="text-center space-y-2">
           <div className="text-xs mono text-dim">
             {currentQuestion + 1} of {questions.length}

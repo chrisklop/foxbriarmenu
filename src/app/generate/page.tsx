@@ -2,6 +2,7 @@
 
 import { useState, useEffect, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
+import Logo from '@/components/Logo'
 
 interface Cocktail {
   names: string[]
@@ -86,6 +87,7 @@ function GenerateContent() {
     return (
       <div className="container fade-in">
         <div className="py-16 text-center space-y-8">
+          <Logo />
           <div className="space-y-4">
             <div className="text-sm mono text-dim">CONJURING</div>
             <h1 className="text-3xl serif">Your libation awaits...</h1>
@@ -106,6 +108,7 @@ function GenerateContent() {
     return (
       <div className="container fade-in">
         <div className="py-16 text-center space-y-8">
+          <Logo />
           <div className="space-y-4">
             <h1 className="text-3xl serif">The spirits are restless</h1>
             <p className="text-dim">{error}</p>
@@ -134,6 +137,7 @@ function GenerateContent() {
   return (
     <div className="container fade-in">
       <div className="py-8 space-y-8">
+        <Logo />
         <header className="text-center space-y-4">
           <div className="text-xs mono text-dim">YOUR LIBATION</div>
           <h1 className="text-4xl serif font-semibold">
