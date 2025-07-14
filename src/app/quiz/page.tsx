@@ -72,15 +72,17 @@ function QuizContent() {
     
     // Check if this completes the quiz
     const totalAnswered = Object.keys(newAnswers).length
+    const isLastQuestion = currentQuestion === questions.length - 1
     
     console.log('Question answered:', questionId)
     console.log('Total answered:', totalAnswered)
     console.log('Total questions:', questions.length)
     console.log('Current question index:', currentQuestion)
+    console.log('Is last question:', isLastQuestion)
     
-    if (totalAnswered === questions.length) {
-      // All questions answered - show completion immediately
-      console.log('Setting showCompletion to true')
+    if (isLastQuestion && totalAnswered === questions.length) {
+      // This is the final question and all are answered
+      console.log('Quiz completed! Setting showCompletion to true')
       setShowCompletion(true)
     } else if (currentQuestion < questions.length - 1) {
       // More questions to go - advance
@@ -119,7 +121,6 @@ function QuizContent() {
   }
 
   const progress = ((currentQuestion + 1) / questions.length) * 100
-  const isComplete = showCompletion || Object.keys(answers).length === questions.length
 
   return (
     <div className="container fade-in">
