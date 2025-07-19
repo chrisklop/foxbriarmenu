@@ -54,6 +54,16 @@ const questions = [
       { value: 'warmth', label: 'Gentle embraces and stories' },
       { value: 'edge', label: 'Something that cuts through' }
     ]
+  },
+  {
+    id: 'drink_complexity',
+    question: 'Your ideal libation is...',
+    options: [
+      { value: 'mysterious', label: 'An enigma with hidden depths' },
+      { value: 'bold', label: 'Unafraid to make a statement' },
+      { value: 'refined', label: 'Elegant in its simplicity' },
+      { value: 'theatrical', label: 'A performance in a glass' }
+    ]
   }
 ]
 

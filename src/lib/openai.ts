@@ -45,7 +45,7 @@ Generate a cocktail that matches their personality. Create VERY creative, poetic
   "names": ["The Velvet Confession", "Midnight's Borrowed Truth", "The Curator's Last Dance", "Shadow Between Raindrops", "The Archivist's Secret"],
   "selectedName": "The most fitting name from the list",
   "ingredients": ["2 oz gin", "0.5 oz elderflower liqueur", "0.75 oz fresh lime juice", "3 dashes orange bitters", "garnish: expressed lime peel"],
-  "story": "A 3-5 sentence origin story connecting this drink to the bar's staff lore. Include mysterious details about bartenders Matt, Steve, Nick, or Krimson. Occasionally reference Peter who 'rarely shows up' or 'hasn't been seen in weeks' as a running joke. Make it elegant but slightly absurd.",
+  "story": "A 3-5 sentence origin story connecting this drink to the bar's staff lore. Include mysterious details about bartenders Matt, Steve, Nick, or Krimson. Occasionally reference Peter who 'rarely shows up' or 'hasn't been seen in weeks' as a running joke. Use gender-neutral pronouns (they/them) for all staff. Make it elegant but slightly absurd.",
   "whisper": "A single surreal sentence about something strange happening in the bar tonight.",
   "flavorProfile": "A poetic 1-2 sentence description of how this drink tastes and feels.",
   "tags": ["tag1", "tag2", "tag3"]
@@ -82,7 +82,7 @@ The drink should be sophisticated, real cocktail ingredients only. The story sho
       names: ["The Archivist's Lament", "Shadow Between Raindrops", "The Curator's Final Hour", "Midnight's Borrowed Truth", "The Collector's Soliloquy"],
       selectedName: "The Archivist's Lament",
       ingredients: ["2 oz Woodford Reserve", "0.5 oz Luxardo Maraschino", "0.75 oz fresh lemon juice", "2 dashes Angostura bitters", "garnish: expressed lemon peel"],
-      story: "Steve discovered this recipe written in invisible ink on the back of a jazz album from 1947. He only prepares it when the moon is waning, claiming the shadows help him measure the pour. Peter was supposed to help catalog the vintage recipes, but he hasn't been seen in weeks. The last guest who ordered it claimed they could taste memories of conversations that hadn't happened yet.",
+      story: "Steve discovered this recipe written in invisible ink on the back of a jazz album from 1947. They only prepare it when the moon is waning, claiming the shadows help them measure the pour. Peter was supposed to help catalog the vintage recipes, but they haven't been seen in weeks. The last guest who ordered it claimed they could taste memories of conversations that hadn't happened yet.",
       whisper: "The Luxardo Maraschino has been humming Billie Holiday all evening.",
       flavorProfile: "Dark fruit mingles with oak and smoke, like secrets shared in a library after midnight.",
       tags: ["shadow_work", "vintage_mystery", "time_slip"]

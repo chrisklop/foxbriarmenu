@@ -1,0 +1,161 @@
+{
+  "Exotic & Exciting": [
+    {
+      "name": "Bearded Lady",
+      "price": 14,
+      "ingredients": [
+        "400 Conejos Mezcal",
+        "Biggalet China China",
+        "Contratto Bitter Orange",
+        "Acid Adjusted Pineapple Juice"
+      ]
+    },
+    {
+      "name": "Blockhead",
+      "price": 14,
+      "ingredients": [
+        "Soju",
+        "Vanilla Liqueur",
+        "Honeydew Syrup",
+        "Lime Juice",
+        "Soda Water"
+      ]
+    },
+    {
+      "name": "Fiji Mermaid",
+      "price": 14,
+      "ingredients": [
+        "Planteray Isle of Fiji Rum",
+        "Cherry Heering",
+        "Velvet Falernum",
+        "Pierre Ferrand Yuzu Curacao",
+        "Lime Juice"
+      ]
+    }
+  ],
+  "Creature Features": [
+    {
+      "name": "Lion Tamer",
+      "price": 14,
+      "ingredients": [
+        "Gran Centenario Plata Tequila",
+        "Rice Wine Chili Shrub",
+        "Soda Water",
+        "Cucumber"
+      ]
+    },
+    {
+      "name": "Circus Monkeys",
+      "price": 14,
+      "ingredients": [
+        "Peanut Infused Evan Williams BIB",
+        "Giffard Banane du Bresil",
+        "Lemon Juice",
+        "Pineapple Juice",
+        "Maple Syrup",
+        "Banana Milk"
+      ]
+    },
+    {
+      "name": "Pink Elephants",
+      "price": 14,
+      "ingredients": [
+        "Cachaça",
+        "Lemon",
+        "Sugar",
+        "Raspberry Liqueur"
+      ]
+    }
+  ],
+  "Feats of Strength": [
+    {
+      "name": "Trapeze Act",
+      "price": 14,
+      "ingredients": [
+        "Uncle Val’s Botanical Gin",
+        "Giffard Wild Elderflower",
+        "Orgeat",
+        "Vanilla",
+        "Lemon Juice",
+        "Sparkling Wine"
+      ]
+    },
+    {
+      "name": "Clown Nose",
+      "price": 14,
+      "ingredients": [
+        "Tomato Infused Gin",
+        "House Basil Vermouth",
+        "Balsamic Vinegar"
+      ]
+    },
+    {
+      "name": "Strongman",
+      "price": 10,
+      "ingredients": [
+        "Miller High Life",
+        "Mellow Corn"
+      ]
+    }
+  ],
+  "Beers": [
+    {
+      "name": "Miller High Life",
+      "price": 4
+    },
+    {
+      "name": "Della Barnes",
+      "price": 8,
+      "description": "Hazy IPA · Dry Ground Brewing Co"
+    },
+    {
+      "name": "Derby City Pils",
+      "price": 6,
+      "description": "Pilsner · Against the Grain"
+    }
+  ],
+  "Wines": [
+    {
+      "name": "EZY TGR 'Chillable Red'",
+      "price": 16,
+      "description": "Cabernet Sauvignon Blend · Oregon"
+    },
+    {
+      "name": "Gen de Alma 'JiJiJi'",
+      "price": 14,
+      "description": "Chenin Blanc · Tupungato, Argentina"
+    },
+    {
+      "name": "Gulp Hablo 'Orange'",
+      "price": 14,
+      "description": "Verdejo/Sauvignon Blanc · Castilla La Mancha, Spain"
+    }
+  ],
+  "Concession Stand": [
+    {
+      "name": "Peanuts",
+      "price": 5,
+      "description": "Salted Roasted Peanuts"
+    },
+    {
+      "name": "Popcorn",
+      "price": 5,
+      "description": "Fresh Popped Daily with Truffle Salt"
+    },
+    {
+      "name": "Cotton Candy",
+      "price": 5
+    },
+    {
+      "name": "Cracker Jacks",
+      "price": 3
+    },
+    {
+      "name": "Animal Crackers",
+      "price": 5
+    }
+  ]
+}
+  
+
+  

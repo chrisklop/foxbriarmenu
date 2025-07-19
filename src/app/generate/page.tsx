@@ -12,6 +12,12 @@ interface Cocktail {
   whisper: string
   flavorProfile: string
   tags: string[]
+  foodPairing?: {
+    name: string
+    price: number
+    description: string
+    pairingReason: string
+  }
 }
 
 function GenerateContent() {
@@ -34,7 +40,8 @@ function GenerateContent() {
         first_sip: searchParams.get('first_sip') || '',
         week_feeling: searchParams.get('week_feeling') || '',
         spicy_reaction: searchParams.get('spicy_reaction') || '',
-        evening_mood: searchParams.get('evening_mood') || ''
+        evening_mood: searchParams.get('evening_mood') || '',
+        drink_complexity: searchParams.get('drink_complexity') || ''
       }
 
       const response = await fetch('/api/generate-cocktail', {
@@ -177,6 +184,20 @@ function GenerateContent() {
               <p className="text-sm italic">
                 {cocktail.flavorProfile}
               </p>
+            </div>
+          )}
+
+          {cocktail.foodPairing && (
+            <div className="text-center space-y-4 border-t border-border pt-8">
+              <div className="text-xs mono text-dim">SUGGESTED PAIRING</div>
+              <div className="space-y-2">
+                <h4 className="text-lg serif">{cocktail.foodPairing.name}</h4>
+                <p className="text-sm text-dim">{cocktail.foodPairing.description}</p>
+                <p className="text-xs mono">${cocktail.foodPairing.price}</p>
+                <p className="text-sm italic text-dim">
+                  {cocktail.foodPairing.pairingReason}
+                </p>
+              </div>
             </div>
           )}
         </div>
