@@ -123,7 +123,7 @@ function generateAlternativeNames(drinkName: string): string[] {
   return [drinkName, ...baseNames.slice(0, 4)]
 }
 
-function generateAtmosphere(drink: MenuItem, answers: Record<string, string>) {
+function generateAtmosphere(_drink: MenuItem, _answers: Record<string, string>) {
   const staff = ['Matt', 'Steve', 'Nick', 'Krimson']
   const selectedStaff = staff[Math.floor(Math.random() * staff.length)]
   

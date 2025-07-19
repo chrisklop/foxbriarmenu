@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, Suspense } from 'react'
+import { useState, useEffect, useCallback, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Logo from '@/components/Logo'
 
@@ -34,9 +34,9 @@ function ProfileContent() {
   useEffect(() => {
     loadProfile()
     loadWhispers()
-  }, [])
+  }, [loadProfile])
 
-  const loadProfile = () => {
+  const loadProfile = useCallback(() => {
     const name = searchParams.get('name')
     const pin = searchParams.get('pin')
     
@@ -48,7 +48,7 @@ function ProfileContent() {
         setProfile(JSON.parse(userData))
       }
     }
-  }
+  }, [searchParams])
 
   const loadWhispers = async () => {
     try {

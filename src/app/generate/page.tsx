@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, Suspense } from 'react'
+import { useState, useEffect, useCallback, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Logo from '@/components/Logo'
 
@@ -28,9 +28,9 @@ function GenerateContent() {
 
   useEffect(() => {
     generateCocktail()
-  }, [])
+  }, [generateCocktail])
 
-  const generateCocktail = async () => {
+  const generateCocktail = useCallback(async () => {
     try {
       setIsLoading(true)
       setError(null)
@@ -64,7 +64,7 @@ function GenerateContent() {
     } finally {
       setIsLoading(false)
     }
-  }
+  }, [searchParams])
 
   const handleContinue = () => {
     if (!cocktail) return
