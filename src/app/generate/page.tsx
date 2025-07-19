@@ -26,10 +26,6 @@ function GenerateContent() {
   const [error, setError] = useState<string | null>(null)
   const searchParams = useSearchParams()
 
-  useEffect(() => {
-    generateCocktail()
-  }, [generateCocktail])
-
   const generateCocktail = useCallback(async () => {
     try {
       setIsLoading(true)
@@ -65,6 +61,10 @@ function GenerateContent() {
       setIsLoading(false)
     }
   }, [searchParams])
+
+  useEffect(() => {
+    generateCocktail()
+  }, [generateCocktail])
 
   const handleContinue = () => {
     if (!cocktail) return
