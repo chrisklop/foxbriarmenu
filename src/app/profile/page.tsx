@@ -31,11 +31,6 @@ function ProfileContent() {
   const [whispers, setWhispers] = useState<string[]>([])
   const searchParams = useSearchParams()
 
-  useEffect(() => {
-    loadProfile()
-    loadWhispers()
-  }, [loadProfile])
-
   const loadProfile = useCallback(() => {
     const name = searchParams.get('name')
     const pin = searchParams.get('pin')
@@ -59,6 +54,11 @@ function ProfileContent() {
       console.error('Error loading whispers:', error)
     }
   }
+
+  useEffect(() => {
+    loadProfile()
+    loadWhispers()
+  }, [loadProfile])
 
   const getRandomWhisper = () => {
     if (whispers.length === 0) return "The bar holds its secrets tonight."
